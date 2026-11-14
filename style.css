@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f1f5f9;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #1992d4;
+  color: white;
+}
+
+header h1 { margin: 0; }
+
+button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#new-book { background: white; color: #1992d4; }
+
+#library {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 8px solid #f0b429;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 { margin-top: 0; }
+
+.toggle { background: #1992d4; color: white; }
+.remove { background: #e12d39; color: white; margin-left: 8px; }
+
+dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop { background: rgba(0, 0, 0, 0.4); }
+
+#book-form {
+  display: grid;
+  gap: 15px;
+}
+
+#book-form label { display: grid; gap: 5px; }
+
+#book-form input[type="text"],
+#book-form input[type="number"] {
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+#book-form button[type="submit"] { background: #1992d4; color: white; }
+
+#book-form label:has(#read) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
