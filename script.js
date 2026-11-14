@@ -22,6 +22,10 @@ addBookToLibrary("Atomic Habits", "James Clear", 320, true);
 
 console.log(myLibrary);
 
+Book.prototype.toggleRead = function () {
+    this.read = !this.read;
+};
+
 function displayBooks() {
     const library = document.querySelector("#library");
     library.textContent = ""; // clear old cards first
@@ -36,6 +40,8 @@ function displayBooks() {
       <p>by ${book.author}</p>
       <p>${book.pages} pages</p>
       <p>${book.read ? "Read ✅" : "Not read yet"}</p>
+      <button class="toggle">Toggle Read</button>
+      <button class="remove">Remove</button>
     `;
 
         library.appendChild(card);
@@ -66,4 +72,17 @@ form.addEventListener("submit", (event) => {
     displayBooks();
     form.reset();
     dialog.close();
+});
+
+document.querySelector("#library").addEventListener("click", (event) => {
+    const card = event.target.closest(".card");
+    if (!card) return;
+    const book = myLibrary.find((b) => b.id === card.dataset.id);
+
+    if (event.target.classList.contains("remove")) {
+        myLibrary.splice(myLibrary.indexOf(book), 1);
+    } else if (event.target.classList.contains("toggle")) {
+        book.toggleRead();
+    }
+    displayBooks();
 });
