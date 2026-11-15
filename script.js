@@ -1,14 +1,17 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    if (!new.target) {
-        throw Error("Use 'new' to create a Book");
+class Book {
+    constructor(title, author, pages, read) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -21,10 +24,6 @@ addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
 addBookToLibrary("Atomic Habits", "James Clear", 320, true);
 
 console.log(myLibrary);
-
-Book.prototype.toggleRead = function () {
-    this.read = !this.read;
-};
 
 function displayBooks() {
     const library = document.querySelector("#library");
